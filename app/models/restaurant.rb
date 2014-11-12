@@ -1,7 +1,6 @@
 class Restaurant < ActiveRecord::Base
   has_many :reservations
   has_many :restaurant_managers
-  has_many :hours
 
   validates_presence_of :name, :capacity, :phone_number
   validates_presence_of :street_number, :street_name, :city, :province, :postal_code
