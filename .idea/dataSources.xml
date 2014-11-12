@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3239746994">
+  <component name="DataSourceManagerImpl" format="xml" hash="515054046">
     <data-source source="LOCAL" name="Rails bitmaker-seatyourself: development" uuid="3ea11b3f-18ff-4f72-90f3-7df4b3c5308b">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
