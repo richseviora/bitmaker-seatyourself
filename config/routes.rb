@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:new, :create, :destroy] # Yung
+  resources :customers do #Phil
+    resources :reservations, :shallow => true, except: [:destroy] #Phil
+  end
+  resources :restaurants do #Rich
+    resources :rest_reservations, :shallow => true, only: [:show, :edit, :update] #Rich
+  end
+  resources :admin #Rich
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,3 +62,24 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+=begin
+Sessions - Phil
+  Handles log/log out.
+Customer - Yung
+  List of available restaurants.
+  Sign-up for Customers
+Reservations - Phil
+  Create a reservation.
+  View a reservation.
+  Cancel a reservation.
+Restaurant - Rich
+  View reservations.
+  Approve reservation.
+  Decline reservation.
+Admin - Rich
+  List of all restaurants
+  Approve or decline membership requests.
+  Create admins and restaurant users.
+
+=end
