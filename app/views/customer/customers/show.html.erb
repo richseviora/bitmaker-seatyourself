@@ -1,2 +1,13 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<h1> <%= @customer.name %>'s Profile </h1>
+
+<h2>Reservations</h2>
+
+<% @customer.reservations.each do |reservation| %>
+	<div>
+		<p>Restaurant: <%= reservation.restaurant.name %></p>
+		<p>Date: <%= reservation.date %></p>
+	</div>
+	<div>
+		<%= link_to "View Restaurant", restaurant_path(reservation.restaurant)  %>
+	</div>
+<% end %>

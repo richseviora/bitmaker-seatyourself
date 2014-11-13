@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       # check to see what kind of Class Object user is equal to
       if user.kind_of?(Administrator)
-        redirect_to admin_root, notice: "You're logged in!"
+        redirect_to admin_root_path, notice: "You're logged in!"
       elsif user.kind_of?(Customer)
-        redirect_to customer_path, notice: "You're logged in!"
+        redirect_to customer_path(user.id), notice: "You're logged in!"
       elsif user.kind_of?(RestaurantManager)
         redirect_to restaurant_root, notice: "You're logged in!"
       else

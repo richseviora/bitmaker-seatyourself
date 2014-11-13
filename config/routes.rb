@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'customer/restaurants#index'
+
   resources :sessions, only: [:new, :create, :destroy] # Yung
 
-  namespace :customers do #Phil
+  namespace :customer do #Phil
+    root 'customer/customers#show'
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
 
@@ -22,8 +25,8 @@ Rails.application.routes.draw do
     resources :restaurants
   end
 
-  scope module: 'customers' do
-    resources :customers
+  scope module: 'customer' do
+    resources :customers, except: [:index]
     resources :restaurants, only: [:index, :show]
   end
 

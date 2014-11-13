@@ -1,0 +1,45 @@
+diff --git a/app/views/customer/customers/show.html.erb b/app/views/customer/customers/show.html.erb
+index 89bd684..c9a5cd1 100644
+--- a/app/views/customer/customers/show.html.erb
++++ b/app/views/customer/customers/show.html.erb
+@@ -1,2 +1,13 @@
+-<h1>Customers#show</h1>
+-<p>Find me in app/views/customers/show.html.erb</p>
++<h1> <%= @customer.name %>'s Profile </h1>
++
++<h2>Reservations</h2>
++
++<% @customer.reservations.each do |reservation| %>
++	<div>
++		<p>Restaurant: <%= reservation.restaurant.name %></p>
++		<p>Date: <%= reservation.date %></p>
++	</div>
++	<div>
++		<%= link_to "View Restaurant", restaurant_path(reservation.restaurant)  %>
++	</div>
++<% end %>
+\ No newline at end of file
+diff --git a/config/routes.rb b/config/routes.rb
+index c53e542..6b3120c 100644
+--- a/config/routes.rb
++++ b/config/routes.rb
+@@ -2,7 +2,7 @@ Rails.application.routes.draw do
+ 
+   resources :sessions, only: [:new, :create, :destroy] # Yung
+ 
+-  namespace :customers do #Phil
++  namespace :customer do #Phil
+     resources :reservations, :shallow => true, except: [:destroy] #Phil
+   end
+ 
+@@ -22,8 +22,8 @@ Rails.application.routes.draw do
+     resources :restaurants
+   end
+ 
+-  scope module: 'customers' do
+-    resources :customers
++  scope module: 'customer' do
++    resources :customers, except: [:index]
+     resources :restaurants, only: [:index, :show]
+   end
+ 

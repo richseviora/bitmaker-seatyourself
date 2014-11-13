@@ -8,7 +8,7 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     
     if @customer.save
-      redirect_to customer_path(@customer.id) #{}"/customers/#{@customer.id}" 
+      redirect_to customer_path(@customer.id)
     else
       render :new
     end
