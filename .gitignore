@@ -26,3 +26,5 @@
 .idea/bitmaker-seatyourself.iml
 
 .idea/dataSources.xml
+
+.idea/dataSources.local.xml
