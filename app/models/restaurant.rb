@@ -10,10 +10,28 @@ class Restaurant < ActiveRecord::Base
   # TODO Validate that the hours do not overlap.
   # TODO Implement hours as input string.
 
+  # Determines whether capacity is available for a given party size.
+  def available?(reservation_time, party_size)
+    open_at_time(reservation_time) && available_capacity(reservation_time) >= party_size
+  end
 
+  def open_at_time(datetime)
+    d = datetime
+    start_time = DateTime.new(d.year, d.month, d.day, hours_for_date(datetime)[0])
+    end_time = DateTime.new(d.year, d.month, d.day, hours_for_date(datetime)[1])
+    puts start_time
+    puts end_time
+    puts datetime
+    datetime.between?(start_time, end_time)
+  end
+
+  def available_capacity(reservation_time)
+    used_reservations = reservations.where(:date == reservation_time).sum(:party_size)
+    capacity - used_reservations
+  end
 
   def hours_for_date(requested_date)
-    JSON.restore(hours)[:all_days]
+    JSON.restore(hours)['all_days']
   end
 
   private
