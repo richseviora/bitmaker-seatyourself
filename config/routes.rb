@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   namespace :restaurant do
     root 'restaurant#show'
-    resources(:reservations, only: [:show, :edit, :update]) #Rich
+    resources(:reservations, only: [:show, :edit, :update]) do #Rich
+      member do
+        post 'approve'
+        post 'reject'
+      end
+    end
   end
 
   namespace :admin do
