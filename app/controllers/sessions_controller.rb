@@ -8,12 +8,19 @@ class SessionsController < ApplicationController
     # check if that user both exists and that it can be authenticated with the password typed in the password input
     # field
     if user && user.authenticate(params[:password])
-      # create a key-value pair in the session hash ':user_id' is, with user.id being the value.
-      binding.pry
+      # create a key-value pair in the session hash ':user_id' is, with user.id being the value
       session[:user_id] = user.id
-      redirect_to #TODO need a <whatever>_path, :notice "Logged in as #{user.name}"
+      # check to see what kind of Class Object user is equal to
+      if user.kind_of?(Administrator)
+        redirect_to admin_root, notice: "You're logged in!"
+      elsif user.kind_of?(Customer)
+        redirect_to customer_root, notice: "You're logged in!"
+      elsif user.kind_of?(RestaurantManager)
+        redirect_to restaurant_root, notice: "You're logged in!"
+      else
+        flash.now[:alert] = "Who are you?  I don't know what or who you are, but you should contact the administrator!!"
+      end
     else
-      flash.now[:alert] = "Invalid email or password"
       render "new"
     end
   end
