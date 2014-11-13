@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
     # field
     if user && user.authenticate(params[:password])
       # create a key-value pair in the session hash ':user_id' is, with user.id being the value
-      session[:user_id] = user.id
+      session[:user_id] = user.id, :notice => "Logged in as #{user.name}"
     else
+      flash.now[:alert] = "Invalid email or password"
       render "new"
     end
   end
@@ -18,7 +19,5 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to # to be defined main_url, notice: "You have are logged in!"
-  else
-    render "new"
   end
 end

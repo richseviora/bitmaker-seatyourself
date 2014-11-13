@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    @customers  = Customer.new
+    @customers  = Customer.all
   end
 
   def new
@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      redirect_to customers_show_url, notice: "Crated a new user!"
+      redirect_to customers_show_url, notice: "Created a new user!"
     else
       render "new"
     end
@@ -27,6 +27,6 @@ class CustomersController < ApplicationController
 end
 
 private
-def user_params
+def customer_params
   params.require(:customer).permit(:email, :password_digest, :name, :type, :phone_number, :restaurant_id)
 end
