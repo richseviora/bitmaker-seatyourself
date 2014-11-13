@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
-  resources :sessions, only: [:new, :create, :destroy] # Yung
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get 'customers/index'
+
+  get 'customers/new'
+
+  get 'customers/show'
+
+  get 'customers/edit'
+
+  resources :sessions, only: [:new, :create, :destroy] # Yungrail
   resources :customers do #Phil
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
