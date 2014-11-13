@@ -1,4 +1,6 @@
 class Restaurant < ActiveRecord::Base
+  # For the sake of simplicity this model does not attempt to handle time offsets.
+  # We would need to specify the hours in local time (done), store the locale and convert the specified hours into UTC when conducting any operations.
   has_many :reservations
   has_many :restaurant_managers
 
@@ -19,9 +21,6 @@ class Restaurant < ActiveRecord::Base
     d = datetime
     start_time = DateTime.new(d.year, d.month, d.day, hours_for_date(datetime)[0])
     end_time = DateTime.new(d.year, d.month, d.day, hours_for_date(datetime)[1])
-    puts start_time
-    puts end_time
-    puts datetime
     datetime.between?(start_time, end_time)
   end
 
@@ -31,13 +30,14 @@ class Restaurant < ActiveRecord::Base
   end
 
   def hours_for_date(requested_date)
+    requested_date # Unused variable would need to be used if hours were set per day.
     JSON.restore(hours)['all_days']
   end
 
   private
 
-  # Assuming same hours every day of the week.
   def set_hours(start_hour, close_hour)
+    # POC assumes same hours every day of the week.
     hours = JSON.generate({:all_days => [9,20]})
   end
 end

@@ -9,14 +9,17 @@ Rails.application.routes.draw do
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
 
-  namespace :restaurant do
-    root 'restaurant#show'
-    resources(:reservations, only: [:show]) do #Rich
-      member do
-        post 'approve'
-        post 'reject'
+  namespace :manager, shallow: true do
+    root 'restaurants#show'
+    resource(:restaurant, only:[:edit, :show, :update]) do
+      resources(:reservations, only: []) do #Rich
+        member do
+          post 'approve'
+          post 'reject'
+        end
       end
     end
+
   end
 
   namespace :admin do
