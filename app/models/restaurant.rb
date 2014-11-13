@@ -9,4 +9,17 @@ class Restaurant < ActiveRecord::Base
 
   # TODO Validate that the hours do not overlap.
   # TODO Implement hours as input string.
+
+
+
+  def hours_for_date(requested_date)
+    JSON.restore(hours)[:all_days]
+  end
+
+  private
+
+  # Assuming same hours every day of the week.
+  def set_hours(start_hour, close_hour)
+    hours = JSON.generate({:all_days => [9,20]})
+  end
 end
