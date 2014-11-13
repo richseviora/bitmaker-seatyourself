@@ -8,7 +8,7 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     
     if @customer.save
-      redirect_to customer_path
+      redirect_to customer_path(@customer.id) #{}"/customers/#{@customer.id}" 
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Customer::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :password_digest, :phone_number)
+    params.require(:customer).permit(:name, :email, :phone_number, :password, :password_confirmation)
   end
   
 end
