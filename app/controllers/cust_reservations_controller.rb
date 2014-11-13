@@ -32,6 +32,7 @@ class CustReservationsController < ApplicationController
       redirect_to customer_cust_reservations
     else
       render :edit
+    end
   end
 
   private
