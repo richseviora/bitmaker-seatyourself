@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'customers/edit'
 
-  resources :sessions, only: [:new, :create, :destroy] # Yungrail
+  resources :sessions, only: [:new, :create, :destroy] # Yung
   resources :customers do #Phil
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end

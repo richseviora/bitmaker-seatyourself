@@ -16,8 +16,8 @@ rest.city = 'Toronto'
 rest.postal_code = 'M4W3Y3'
 rest.province = 'Ontario'
 rest.country = 'Canada'
-#rest.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
-#rest.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
+rest.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
+rest.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
 rest.save
 
 rest_two = Restaurant.new
@@ -30,8 +30,8 @@ rest_two.city = 'Toronto'
 rest_two.postal_code = 'M4W4Y3'
 rest_two.province = 'Ontario'
 rest_two.country = 'Canada'
-#rest_two.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
-#rest_two.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
+rest_two.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
+rest_two.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
 rest_two.save
 
 customer = Customer.new

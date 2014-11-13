@@ -8,8 +8,10 @@ class SessionsController < ApplicationController
     # check if that user both exists and that it can be authenticated with the password typed in the password input
     # field
     if user && user.authenticate(params[:password])
-      # create a key-value pair in the session hash ':user_id' is, with user.id being the value
-      session[:user_id] = user.id, :notice => "Logged in as #{user.name}"
+      # create a key-value pair in the session hash ':user_id' is, with user.id being the value.
+      binding.pry
+      session[:user_id] = user.id
+      redirect_to #TODO need a <whatever>_path, :notice "Logged in as #{user.name}"
     else
       flash.now[:alert] = "Invalid email or password"
       render "new"
@@ -18,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to # to be defined main_url, notice: "You have are logged in!"
+    redirect_to #TODO must defined main_url, notice: "You have are logged in!"
   end
 end
