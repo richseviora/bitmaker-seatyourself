@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy] # Yung
-  resources :customers do #Phil
+
+  namespace :customers do #Phil
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
 
@@ -19,6 +20,11 @@ Rails.application.routes.draw do
     root 'admin#index'
     resources :users
     resources :restaurants
+  end
+
+  scope module: 'customers' do
+    resources :customers
+    resources :restaurants, only: [:index, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
