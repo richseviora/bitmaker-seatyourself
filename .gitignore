@@ -19,6 +19,14 @@
 
 .idea/workspace.xml
 
+<<<<<<< HEAD
 .idea/bitmaker-seatyourself.iml
 
 .idea/runConfigurations/test__bitmaker_seatyourself.xml
+
+.idea/dataSources.ids
+
+.idea/.generators
+
+.idea/dataSources.xml
+>>>>>>> FETCH_HEAD
