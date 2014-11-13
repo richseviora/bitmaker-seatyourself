@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  capacity: 1
+  capacity: 20
   phone_number: MyString
   street_number: MyString
   street_name: MyString
@@ -10,10 +10,11 @@ one:
   province: MyString
   country: MyString
   postal_code: MyString
+  hours: '<%= JSON.generate({:all_days => [9,20]}) %>'
 
 two:
   name: MyString
-  capacity: 1
+  capacity: 20
   phone_number: MyString
   street_number: MyString
   street_name: MyString
@@ -21,3 +22,5 @@ two:
   province: MyString
   country: MyString
   postal_code: MyString
+  hours: '<%= JSON.generate({:all_days => [9,20]}) %>'
+
