@@ -1,2 +1,22 @@
-<h1>Restaurant::Restaurant#show</h1>
-<p>Find me in app/views/restaurant/restaurant/show.html.erb</p>
+<h1>Restaurant</h1>
+<p><%= @restaurant.name %></p>
+<h2>Reservations</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Reservation Name</th>
+    <th>Party Size</th>
+    <th>Reservation Time</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @restaurant.reservations.each do |reservation| %>
+  <tr>
+    <td><%= reservation.customer.name %></td>
+    <td><%= reservation.party_size %></td>
+    <td><%= reservation.date %></td>
+    <td>Approve, Reject</td>
+  </tr>
+  <% end %></tbody>
+</table>
