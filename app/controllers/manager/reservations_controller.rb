@@ -1,4 +1,4 @@
-class Restaurant::ReservationsController < ApplicationController
+class Managers::ReservationsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
   before_action :find_reservation
 

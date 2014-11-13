@@ -1,5 +1,14 @@
 <h1>Restaurant</h1>
-<p><%= @restaurant.name %></p>
+<div><%= @restaurant.name%></div>
+<div><%= @restaurant.phone_number %></div>
+<div><%= @restaurant.capacity %></div>
+<div><%= @restaurant.street_number%></div>
+<div><%= @restaurant.street_name%></div>
+<div><%= @restaurant.city%></div>
+<div><%= @restaurant.province%></div>
+<div><%= @restaurant.country%></div>
+<div><%= @restaurant.postal_code%></div>
+<%= content_tag :div, link_to('Edit',edit_manager_restaurant_path) %>
 <h2>Reservations</h2>
 <table>
   <thead>
