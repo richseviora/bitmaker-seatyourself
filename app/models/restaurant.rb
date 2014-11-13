@@ -8,4 +8,5 @@ class Restaurant < ActiveRecord::Base
   validates_format_of :phone_number, :with => /\d{3}[ -]?\d{3}[ -]?\d{4}/, :message => 'Phone number must be in the format XXX-XXX-XXXX. Dashes/spaces optional'
 
   # TODO Validate that the hours do not overlap.
+  # TODO Implement hours as input string.
 end

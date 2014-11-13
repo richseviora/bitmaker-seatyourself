@@ -16,8 +16,6 @@ rest.city = 'Toronto'
 rest.postal_code = 'M4W3Y3'
 rest.province = 'Ontario'
 rest.country = 'Canada'
-rest.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
-rest.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
 rest.save
 
 rest_two = Restaurant.new
@@ -30,8 +28,6 @@ rest_two.city = 'Toronto'
 rest_two.postal_code = 'M4W4Y3'
 rest_two.province = 'Ontario'
 rest_two.country = 'Canada'
-rest_two.hours.build(day_of_week: :monday, start_hour: 10, end_hour: 20)
-rest_two.hours.build(day_of_week: :tuesday, start_hour: 10, end_hour: 23)
 rest_two.save
 
 customer = Customer.new
@@ -53,6 +49,7 @@ rest_manager.name = 'Philippe Schwyter'
 rest_manager.email = 'pschwyter90@gmail.com'
 rest_manager.phone_number = '647-300-6660'
 rest_manager.password = '12345'
+rest_manager.restaurant = Restaurant.first
 rest_manager.save
 
 admin = Administrator.new

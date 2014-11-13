@@ -1,26 +1,25 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'customers/index'
-
-  get 'customers/new'
-
-  get 'customers/show'
-
-  get 'customers/edit'
 
   resources :sessions, only: [:new, :create, :destroy] # Yung
   resources :customers do #Phil
     resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
-  resources :restaurants do #Rich
-    resources :rest_reservations, :shallow => true, only: [:show, :edit, :update] #Rich
+
+  namespace :restaurant do
+    root 'restaurant#show'
+    resources(:reservations, only: [:show, :edit, :update]) do #Rich
+      member do
+        post 'approve'
+        post 'reject'
+      end
+    end
   end
-  resources :admin #Rich
+
+  namespace :admin do
+    resources :users
+    resources :restaurants
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
