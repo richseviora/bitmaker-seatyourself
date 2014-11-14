@@ -1,7 +1,5 @@
-class Manager::RestaurantsController < ApplicationController
-  before_action :ensure_logged_in
+class Manager::RestaurantsController < Manager::ManagersController
   before_action :get_restaurant
-  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   def show
   end
@@ -20,18 +18,6 @@ class Manager::RestaurantsController < ApplicationController
   end
 
   private
-  def current_user
-    user = super
-    unless user.is_a?(RestaurantManager)
-      puts "User is a #{user.class}, Redirecting"
-      redirect_to new_session_path
-    end
-    user
-  end
-
-  def handle_not_found
-    redirect_to restaurant_root
-  end
 
   def get_restaurant
     @restaurant = current_user.restaurant
