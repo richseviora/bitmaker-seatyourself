@@ -1,3 +1,5 @@
+<%= link_to "Go to Restaurants", restaurants_path %>
+
 <h1> <%= @customer.name %>'s Profile </h1>
 
 <h2>Reservations</h2>
@@ -6,8 +8,10 @@
 	<div>
 		<p>Restaurant: <%= reservation.restaurant.name %></p>
 		<p>Date: <%= reservation.date %></p>
+		<p>Status: <%= reservation.status %></p>
 	</div>
 	<div>
 		<%= link_to "View Restaurant", restaurant_path(reservation.restaurant)  %>
+		<%= link_to "Cancel Reservation", "/customers/#{@customer.id}/reservations/#{reservation.id}/cancel", method: :patch %>
 	</div>
 <% end %>

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   namespace :customer do #Phil
     root '/customer/customers#show'
-    #resources :reservations, :shallow => true, except: [:destroy] #Phil
   end
 
   namespace :manager, shallow: true do
@@ -30,7 +29,11 @@ Rails.application.routes.draw do
 
   scope module: 'customer' do
     resources :customers, except: [:index] do
-      resources :reservations, only: [:index, :show]
+      resources :reservations, only: [:index, :show] do
+        member do 
+          patch 'cancel'
+        end
+      end
     end
     resources :restaurants, only: [:index, :show] do
       resources :reservations, except: [:index, :destroy]

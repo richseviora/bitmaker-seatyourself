@@ -1,9 +1,11 @@
+<%= link_to "Back to Restaurants", restaurants_path %>
+
 <h1>New Reservation for <%= @restaurant.name %></h1>
 
 <%= form_for ([@restaurant, @reservation]) do |f| %>
 	<div>
 		<%= f.label :date %>
-		<%= f.datetime_select(:date, :order => [:month, :day, :year]) %>
+		<%= f.datetime_select(:date, :order => [:year, :month, :day]) %>
 	</div> 
 	<div>
 		<%= f.label :party_size %>

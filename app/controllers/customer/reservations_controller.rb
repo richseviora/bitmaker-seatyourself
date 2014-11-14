@@ -1,7 +1,6 @@
 class Customer::ReservationsController < ApplicationController
   before_action :current_user
-  before_action :load_restaurant
-
+  before_action :load_restaurant, except: :cancel
 
   def index
     @reservations = current_user.reservations
@@ -14,15 +13,13 @@ class Customer::ReservationsController < ApplicationController
   def create
     @reservation = @restaurant.reservations.build
     @reservation.party_size = params[:reservation][:party_size]
-    @reservation.date = params[:reservation]['date(1i)'].to_i + params[:reservation]['date(2i)'].to_i + params[:reservation]['date(3i)'].to_i + params[:reservation]['date(4i)'].to_i + params[:reservation]['date(5i)'].to_i
-    puts @reservation.date
+    @reservation.date = DateTime.new(*params[:reservation].values.map{|x| x.to_i }[0..4])
     @reservation.customer = current_user
     
     if @reservation.save
       puts @reservation.inspect
       redirect_to customer_path(@reservation.customer.id)
     else
-      2/0
       render :new
     end
   end
@@ -42,6 +39,16 @@ class Customer::ReservationsController < ApplicationController
       redirect_to customer_cust_reservations
     else
       render :edit
+    end
+  end
+
+  def cancel
+    @reservation = current_user.reservations.find(params[:id])
+    @reservation.status = :cancelled
+    if @reservation.save
+      redirect_to customer_path(current_user.id)
+    else
+      redirect_to customer_path(current_user.id)
     end
   end
 
