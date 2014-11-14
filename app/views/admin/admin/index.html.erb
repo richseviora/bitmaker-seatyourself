@@ -11,15 +11,14 @@
   </thead>
   <tbody>
       <tr>
-        <td><%= current_user.name %></td>
-        <td>
-          <%= User.find_each do |user|%>
+        <p><%= current_user.name %></p>
+              <%= User.find_each do |user|%>
               <p>User Name: <%= user.name %></p>
               <p>User Type: <%= user.type %></p>
               <p>User Phone Number: <%= user.phone_number %></p>
               <p>Email address: <%= user.email %> </p>
+            <br/>
           <% end %>
-        </td>
       </tr>
   </tbody>
 </table>
