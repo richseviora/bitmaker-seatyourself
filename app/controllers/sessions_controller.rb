@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       elsif user.kind_of?(Customer)
         redirect_to customer_path(user.id), notice: "You're logged in!"
       elsif user.kind_of?(RestaurantManager)
-        redirect_to restaurant_root, notice: "You're logged in!"
+        redirect_to manager_root_path, notice: "You're logged in!"
       else
         flash.now[:alert] = "Who are you?  I don't know what or who you are, but you should contact the administrator immediately!!"
       end
