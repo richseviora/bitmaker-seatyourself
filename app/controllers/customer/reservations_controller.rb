@@ -1,6 +1,6 @@
 class Customer::ReservationsController < ApplicationController
   before_action :current_user
-  before_action :load_restaurant, except: :cancel
+  before_action :load_restaurant, except: [:cancel, :edit, :update]
 
   def index
     @reservations = current_user.reservations
@@ -30,13 +30,14 @@ class Customer::ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
+    @customer = current_user
   end
   
   def update
     @reservation = Reservation.find(params[:id])
 
     if @reservation.update_attributes(reservation_params)
-      redirect_to customer_cust_reservations
+      redirect_to customer_path(current_user.id)
     else
       render :edit
     end

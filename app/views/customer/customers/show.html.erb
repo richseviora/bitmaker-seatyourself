@@ -9,6 +9,7 @@
 		<p>Restaurant: <%= reservation.restaurant.name %></p>
 		<p>Date: <%= reservation.date %></p>
 		<p>Status: <%= reservation.status %></p>
+		<p>Party Size: <%= reservation.party_size %></p>
 	</div>
 	<div>
 		<%= link_to "View Restaurant", restaurant_path(reservation.restaurant)  %>

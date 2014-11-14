@@ -29,14 +29,14 @@ Rails.application.routes.draw do
 
   scope module: 'customer' do
     resources :customers, except: [:index] do
-      resources :reservations, only: [:index, :show] do
+      resources :reservations, only: [:index, :show, :edit, :update] do
         member do 
           patch 'cancel'
         end
       end
     end
     resources :restaurants, only: [:index, :show] do
-      resources :reservations, except: [:index, :destroy]
+      resources :reservations, only: [:new, :create]
     end
   end
 
