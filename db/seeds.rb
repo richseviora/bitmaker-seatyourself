@@ -16,6 +16,7 @@ rest.city = 'Toronto'
 rest.postal_code = 'M4W3Y3'
 rest.province = 'Ontario'
 rest.country = 'Canada'
+
 rest.save
 
 rest_two = Restaurant.new
@@ -28,6 +29,7 @@ rest_two.city = 'Toronto'
 rest_two.postal_code = 'M4W4Y3'
 rest_two.province = 'Ontario'
 rest_two.country = 'Canada'
+
 rest_two.save
 
 customer = Customer.new
