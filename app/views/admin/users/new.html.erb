@@ -1,0 +1,40 @@
+<h1>Sign up a new administrator</h1>
+
+<%= form_for @administrator, url: admin_users_path do |f| %>
+
+    <% if @administrator.errors.any? %>
+        <div>
+          <h2>Form Invalid</h2>
+          <ul>
+            <% @administrator.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number %>
+    </div>
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+      <%= %>
+    <div>
+      <%= f.submit "Add Administrator" %>
+    </div>
+<% end %>

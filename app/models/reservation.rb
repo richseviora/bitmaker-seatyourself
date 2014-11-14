@@ -6,7 +6,7 @@ class Reservation < ActiveRecord::Base
   validates_numericality_of :party_size, :greater_than => 0
   # TODO Add validation that reservation is not in the past (reservation date >= current date/time during creation)
 
-  validate :availability
+  #validate :availability
 
 	private
 

@@ -35,10 +35,8 @@ class Restaurant < ActiveRecord::Base
     JSON.restore(hours)['all_days']
   end
 
-  private
-
   def set_hours(start_hour, close_hour)
     # POC assumes same hours every day of the week.
-    hours = JSON.generate({:all_days => [9,20]})
+    self.hours = JSON.generate({:all_days => [9,20]})
   end
 end

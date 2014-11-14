@@ -1,5 +1,5 @@
-class Managers::ReservationsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+class Manager::ReservationsController < Manager::ManagersController
+
   before_action :find_reservation
 
   def approve
@@ -26,12 +26,6 @@ class Managers::ReservationsController < ApplicationController
     @reservation = current_user.restaurant.reservations.find(params[:id])
   end
 
-  def current_user
-    # TODO Replace with current user method once available.
-    RestaurantManager.first
-  end
 
-  def handle_not_found
-    redirect_to restaurant_root
-  end
+
 end
