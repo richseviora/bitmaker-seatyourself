@@ -26,7 +26,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def available_capacity(reservation_time)
-    used_reservations = reservations.where(:date == reservation_time).sum(:party_size)
+    used_reservations = reservations.where(:date == reservation_time &&(:status == :pending || :status == :accepted)).sum(:party_size)
     capacity - used_reservations
   end
 
