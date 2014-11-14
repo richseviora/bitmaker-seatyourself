@@ -1,5 +1,5 @@
 <h1>Administrators Page</h1>
-<p><%= current_user.name %></p>
+<p>Hello Administrator: <%= current_user.name %></p>
 <h2>User</h2>
 <table>
   <thead>
@@ -13,7 +13,7 @@
       <tr>
         <td><%= current_user.name %></td>
         <td>
-          <%= @users.each do |user|%>
+          <%= User.find_each do |user|%>
               <p>User Name: <%= user.name %></p>
               <p>User Type: <%= user.type %></p>
               <p>User Phone Number: <%= user.phone_number %></p>
