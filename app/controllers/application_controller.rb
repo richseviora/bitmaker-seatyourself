@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   #Create a current_user helper method to show the log in status of the user. If the user is logged in we want to display "Signed in as [USERNAME]" or else display "Login or Sign up"
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    return @current_user
   end
 
   helper_method :current_user

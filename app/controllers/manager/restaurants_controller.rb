@@ -1,6 +1,7 @@
 class Manager::RestaurantsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  before_action :ensure_logged_in
   before_action :get_restaurant
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   def show
   end
@@ -19,14 +20,17 @@ class Manager::RestaurantsController < ApplicationController
   end
 
   private
-
-  def handle_not_found
-    redirect_to manager_root_path
+  def current_user
+    user = super
+    unless user.is_a?(RestaurantManager)
+      puts "User is a #{user.class}, Redirecting"
+      redirect_to new_session_path
+    end
+    user
   end
 
-  def current_user
-    # TODO Replace with current user method once available.
-    RestaurantManager.first
+  def handle_not_found
+    redirect_to restaurant_root
   end
 
   def get_restaurant
@@ -37,4 +41,6 @@ class Manager::RestaurantsController < ApplicationController
     # TODO Hours needs to be implemented.
     params.require(:restaurant).permit(:name, :phone_number, :street_number, :street_name, :city, :province, :country, :postal_code)
   end
+
+
 end

@@ -28,9 +28,9 @@
         <td><%= reservation.date %></td>
         <td><%= reservation.status %></td>
         <td>
-          <% if reservation.status == :pending %>
-              <%= link_to 'Approve', approve_restaurant_reservation_path(reservation), method: :post %>
-              <%= link_to 'Reject', reject_restaurant_reservation_path(reservation), method: :post %>
+          <% if reservation.status == 'pending' %>
+              <%= link_to 'Approve', approve_manager_reservation_path(reservation), method: :post %>
+              <%= link_to 'Reject', reject_manager_reservation_path(reservation), method: :post %>
           <% else %>
 
           <% end %>
