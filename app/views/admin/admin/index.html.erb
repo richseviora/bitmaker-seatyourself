@@ -12,6 +12,14 @@
   <tbody>
       <tr>
         <td><%= current_user.name %></td>
+        <td>
+          <%= @users.each do |user|%>
+              <p>User Name: <%= user.name %></p>
+              <p>User Type: <%= user.type %></p>
+              <p>User Phone Number: <%= user.phone_number %></p>
+              <p>Email address: <%= user.email %> </p>
+          <% end %>
+        </td>
       </tr>
   </tbody>
 </table>
