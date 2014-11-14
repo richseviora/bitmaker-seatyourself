@@ -1,1 +1,14 @@
-<h1>Restaruants, Wow!</h1>
+<h1>Restaurants, Wow!</h1>
+
+<% Restaurant.all.each do |restaurant| %>
+	<div>
+		<p>Name: <%= restaurant.name %></p>
+		<p>Phone: <%= restaurant.phone_number %></p>
+		<p>Hours: <%= restaurant.hours %></p>
+	</div>
+	<div>
+		<%= link_to "Details", restaurant_path(restaurant.id) %>
+		<%= link_to "Make Reservation", new_restaurant_reservation_path(restaurant) %>
+	</div>
+
+<% end %>

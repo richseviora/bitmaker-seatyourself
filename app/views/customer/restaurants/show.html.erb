@@ -1,0 +1,14 @@
+<%= link_to "Back to Restaurants", restaurants_path %>
+
+<h1><%= @restaurant.name %></h1>
+
+<p>Phone: <%= @restaurant.phone_number %></p>
+<p>Hours: <%= @restaurant.hours %></p>
+
+<p>Capacity: <%= @restaurant.capacity %></p>
+
+<div>
+	<%= render 'address' %>
+</div>
+
+<%= link_to "Make a Reservation", new_restaurant_reservation_path(@restaurant) %>

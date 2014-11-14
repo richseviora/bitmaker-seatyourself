@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy] # Yung
 
   namespace :customer do #Phil
-    root 'customer/customers#show'
-    resources :reservations, :shallow => true, except: [:destroy] #Phil
+    root '/customer/customers#show'
   end
 
   namespace :manager, shallow: true do
@@ -29,8 +28,16 @@ Rails.application.routes.draw do
   end
 
   scope module: 'customer' do
-    resources :customers, except: [:index]
-    resources :restaurants, only: [:index, :show]
+    resources :customers, except: [:index] do
+      resources :reservations, only: [:index, :show] do
+        member do 
+          patch 'cancel'
+        end
+      end
+    end
+    resources :restaurants, only: [:index, :show] do
+      resources :reservations, except: [:index, :destroy]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
