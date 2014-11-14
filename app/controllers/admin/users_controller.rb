@@ -18,9 +18,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @administrator = Administrator.find(params[:id])
 
-    if @user.update_attributes(product_params)
+    if @administrator.update_attributes(administrator_params)
       redirect_to admin_root_path
     else
       render :edit
