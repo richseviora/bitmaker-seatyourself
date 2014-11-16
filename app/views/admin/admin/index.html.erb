@@ -29,4 +29,34 @@
   <% end %>
   </tbody>
 </table>
+<br/>
+<br/>
+
+<h2>Restaurants</h2>
+<table>
+      <tr>
+        <th>Restaurant Name</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Country</th>
+        <th>Postal Code</th>
+        <th>Operating Hours</th>
+        <th>Approval</th>
+      </tr>
+    <tr>
+  <tbody>
+  <%= Restaurant.find_each do |place| %>
+      <td><%= place.name %></td>
+      <td><%= place.street_number %> <%= place.street_name %></td>
+      <td><%= place.city %></td>
+      <td><%= place.province %></td>
+      <td><%= place.postal_code %></td>
+      <td><%= place.country %></td>
+      <td><%= place.hours %></td>
+      </tr>
+      <% end %>
+  </tbody>
+
+</table>
 </p>
