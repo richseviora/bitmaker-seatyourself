@@ -8,6 +8,8 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def create
+    # build a new restaurant using the build command with the parameters from the private restaurant_params private
+    # method
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
@@ -25,6 +27,12 @@ class Admin::RestaurantsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @restaurant = Restaurant.find(restaurant_params[:id])
+    @restaurant.destroy
+    redirect_to admin_root_path
   end
 
   helper_method 'current_user'

@@ -54,6 +54,9 @@
       <td><%= place.postal_code %></td>
       <td><%= place.country %></td>
       <td><%= place.hours %></td>
+      <td><%= link_to "Delete", admin_restaurant_path(place.id), method: :delete, data: {confirm: "Are you sure
+      you want to
+      delete this restaurant?"}  %></td>
       </tr>
       <% end %>
   </tbody>
