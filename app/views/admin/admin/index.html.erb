@@ -2,7 +2,9 @@
 <p>Hello Administrator: <%= current_user.name %></p>
 <h2>Users</h2>
 <td><%= link_to "Sign up new customer", new_customer_path%></td> |
+<tb><%= link_to "Create a new restaurant manager user", new_admin_manager_path %></tb>|
 <td><%= link_to "Create a new admin user", new_admin_user_path %> </td>
+
 <br/>
 <table>
   <thead>

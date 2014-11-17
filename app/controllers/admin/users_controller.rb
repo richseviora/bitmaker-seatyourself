@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @administrator = Administrator.new(administrator_params)
+    @administrat = Administrator.new(administrator_params)
 
     if @administrator.save
       redirect_to admin_root_path
@@ -27,17 +27,15 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  helper_method 'current_user'
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to admin_root_path
   end
 
-
+  helper_method 'current_user'
   private
   def administrator_params
-    params.require(:administrator).permit(:name, :email, :password, :password_confirmation, :phone_number)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone_number)
   end
 end

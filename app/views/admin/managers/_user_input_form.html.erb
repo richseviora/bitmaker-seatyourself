@@ -1,6 +1,4 @@
-<h1>Sign up a new restaurant manager</h1>
-
-<%= form_for @manager, url: admin_managers_path do |f| %>
+<%= form_for @manager, url: admin_manager_path do |f| %>
 
     <% if @manager.errors.any? %>
         <div>
@@ -33,7 +31,8 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     </div>
-       <div>
-      <%= f.submit "Add Restaurant Manager" %>
+    <%= %>
+    <div>
+      <%= f.submit "Edit Restaurant Manager" %>
     </div>
 <% end %>
