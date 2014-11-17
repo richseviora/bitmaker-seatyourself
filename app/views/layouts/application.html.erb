@@ -16,8 +16,9 @@
 
 </body>
 <% if current_user %>
-    <%= link_to "log out", session_path(current_user), method: :delete %>
+    <%= link_to 'log out', session_path(current_user), method: :delete %>
 <% else %>
-    <p>Please <%= link_to "log in", new_session_path %> to add a review.</p>
+    <p>Please <%= link_to 'log in', new_session_path %> to continue.</p>
+    <p>You also sign up as a new <%= link_to 'customer', new_customer_path %> or add a <%= link_to 'restaurant', new_admin_restaurant_path %></p>
 <% end %>
 </html>

@@ -8,7 +8,11 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     
     if @customer.save
-      redirect_to customer_path(@customer.id)
+      if current_user.kind_of?(Administrator)
+        redirect_to admin_root_path
+      elsif
+        redirect_to customer_path(@customer.id)
+      end
     else
       render :new
     end

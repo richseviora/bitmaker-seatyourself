@@ -30,9 +30,11 @@ class Admin::UsersController < ApplicationController
   helper_method 'current_user'
 
   def destroy
-    session[:user_id] = nil
+    @user = User.find(params[:id])
+    @user.destroy
     redirect_to admin_root_path
   end
+
 
   private
   def administrator_params
