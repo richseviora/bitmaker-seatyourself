@@ -2,7 +2,6 @@
 <p>Hello Administrator: <%= current_user.name %></p>
 <h2>Users</h2>
 <td><%= link_to "Sign up new customer", new_customer_path%></td> |
-<td><%= link_to "Add a restaurant", new_admin_restaurant_path %></td> |
 <td><%= link_to "Create a new admin user", new_admin_user_path %> </td>
 <br/>
 <table>
@@ -33,6 +32,7 @@
 <br/>
 
 <h2>Restaurants</h2>
+<td><%= link_to "Add a restaurant", new_admin_restaurant_path %></td>
 <table>
       <tr>
         <th>Restaurant Name</th>
