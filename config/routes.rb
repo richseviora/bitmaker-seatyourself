@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admin#index'
     resources :users
-    resources :restaurants
+    resources :restaurants, except: [:index]
   end
 
   scope module: 'customer' do

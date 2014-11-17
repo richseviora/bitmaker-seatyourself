@@ -8,8 +8,6 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def create
-    # build a new restaurant using the build command with the parameters from the private restaurant_params private
-    # method
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
@@ -22,7 +20,7 @@ class Admin::RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
 
-    if @restaurant.update_attributes(product_params)
+    if @restaurant.update_attributes(restaurant_params)
       redirect_to admin_root_path
     else
       render :edit
@@ -30,7 +28,7 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find(restaurant_params[:id])
+    @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
     redirect_to admin_root_path
   end
