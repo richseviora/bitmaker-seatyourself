@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  # get 'managers/edit'
+  # end
+  #
+  # namespace :admin do
+  # get 'managers/create'
+  # end
+  #
+  # namespace :admin do
+  # get 'managers/destroy'
+  # end
+
   root 'customer/restaurants#index'
 
   resources :sessions, only: [:new, :create, :destroy] # Yung
@@ -25,6 +37,7 @@ Rails.application.routes.draw do
     root 'admin#index'
     resources :users
     resources :restaurants, except: [:index]
+    resources :managers, except: [:index]
   end
 
   scope module: 'customer' do
