@@ -41,3 +41,4 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry', :group => :development
+gem 'geocoder'

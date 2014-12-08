@@ -39,4 +39,8 @@ class Restaurant < ActiveRecord::Base
     # POC assumes same hours every day of the week.
     self.hours = JSON.generate({:all_days => [9,20]})
   end
+
+  def address
+    [street_number, street_name, city, province, country, postal_code].join(' ')
+  end
 end
