@@ -3,6 +3,7 @@ class Restaurant < ActiveRecord::Base
   # We would need to specify the hours in local time (done), store the locale and convert the specified hours into UTC when conducting any operations.
   has_many :reservations
   has_many :restaurant_managers
+  geocoded_by :address, if: :address_changed?
 
   validates_presence_of :name, :capacity, :phone_number
   validates_presence_of :street_number, :street_name, :city, :province, :postal_code
@@ -41,6 +42,10 @@ class Restaurant < ActiveRecord::Base
   end
 
   def address
-    [street_number, street_name, city, province, country, postal_code].join(' ')
+    [street_number.to_s + ' ' + street_name, city, province, country, postal_code].join(',')
+  end
+
+  def address_changed?
+    street_number_changed? || street_name_changed? || city_changed? || province_changed? || country_changed? || postal_code_changed?
   end
 end
