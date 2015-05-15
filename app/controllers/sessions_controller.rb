@@ -27,6 +27,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to new_session_path, notice: "You have to must log in.  Please try again."
+    redirect_to new_session_path, notice: "You have to must be logged in.  Please try again."
   end
 end
